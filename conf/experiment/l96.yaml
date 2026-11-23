@@ -1,0 +1,31 @@
+# @package _global_
+# Run Lorenz-96 experiments:
+#   mundo-train +experiment=l96 system.args.root=<data dir> out=<output dir> \
+#     system.args.forcing=<F> system.L=<N> arm=<arm> +backbone.args.width=<w>
+defaults:
+  - override /system: l96
+  - override /backbone: conv
+arm:
+  fm_steps: 56
+  fm_shift: 4.0
+  dps: grad
+train:
+  batch: 256
+  lr: 1.0e-3
+  sched: const
+  windows: 50000
+  epochs: 60
+  noise: input
+  aux: none
+  aux_w: 0.0
+  ft_aux: none
+  ft_steps: 2000
+  val_every: 0
+  patience: 5
+  val_windows: 5000
+eval:
+  m_gen: 256
+  windows: chained
+  max_windows: 50
+  chains: 25 # 25 x (8 - 1) = 175 scored windows
+  chain_len: 8

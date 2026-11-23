@@ -1,0 +1,6 @@
+# @package _global_
+arm:
+  name: SimVP
+train:
+  aux: none
+  noise: none

@@ -1,0 +1,10 @@
+[rules]
+invalid-mutable-override = "ignore"
+invalid-method-override = "ignore"
+unresolved-import = "warn"
+invalid-argument-type = "warn"
+not-iterable = "warn"
+not-subscriptable = "warn"
+unsupported-operator = "warn"
+no-matching-overload = "warn"
+unresolved-attribute = "warn"

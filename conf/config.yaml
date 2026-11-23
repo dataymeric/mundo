@@ -1,0 +1,59 @@
+defaults:
+  - base_config
+  - system: synthetic
+  - backbone: conv
+  - _self_
+  - arm: recursive
+  - override hydra/job_logging: rich
+
+arm:
+  fm_loss: cfm
+  fm_steps: 25
+  fm_shift: 1.0
+  fm_train_steps: 1000
+  dps_step: 3.0
+  dps_iters: 3
+train:
+  steps: 40000
+  batch: 4
+  lr: 3.0e-4
+  sched: cosine
+  warmup: 500
+  clip: 1.0
+  noise: input+mdi
+  es_draws: 2
+  aux: variogram
+  aux_w: -0.3
+  vg_p: 0.5
+  vg_lags: [1, 2, 4]
+  drop: 0.1
+  val_every: 500
+  val_windows: 32
+  patience: 0
+  min_delta: 0.0
+  val_seed: 1234
+  ckpt_every: 500
+  ft_steps: 8000
+  ft_lr: 1.0e-4
+  ft_aux: spectral
+eval:
+  seed: 99
+  m_gen: 24
+  m_batch: 0
+  weights: best
+  windows: spaced
+  max_windows: 96
+  chains: 32 # 32 x (4 - 1) = 96 scored windows
+  chain_len: 4
+  cdft_windows: 32
+  vg_space: [1, 2, 4, 8, 16]
+  vg_time: [1, 2, 3, 6, 12]
+  vg_p: 0.5
+  cov_levels: [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 0.95, 0.99]
+  spec_members: 2
+
+hydra:
+  job:
+    chdir: false
+  run:
+    dir: ${out}/hydra/${now:%Y-%m-%d_%H-%M-%S}

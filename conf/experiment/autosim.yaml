@@ -1,0 +1,24 @@
+# @package _global_
+# Run AutoSim experiments:
+#   mundo-train +experiment=autosim system.args.root=<data dir> out=<output dir> \
+#     system.args.dataset=<set> system.L=<N> arm=<arm> +backbone.args.width=<w>
+defaults:
+  - override /system: autosim
+  - override /backbone: nat
+arm:
+  fm_steps: 56
+  fm_shift: 4.0
+train:
+  batch: 16
+  aux_w: -1.0
+  drop: 0.3
+  noise: lg+mdi
+  val_windows: 64
+backbone:
+  args:
+    n_noise: 288
+eval:
+  m_gen: 64
+  max_windows: 200
+  chains: 0
+  chain_len: 0

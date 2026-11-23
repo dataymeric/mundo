@@ -1,0 +1,11 @@
+# @package _global_
+system:
+  name: l96
+  L: 64
+  stats_path: ${conf:stats/l96_F${system.args.forcing}.json}
+  args:
+    root: ??? # directory holding L96_K*_J*_F*_TU1000.nc, see docs/DATA.md
+    forcing: ??? # F of the archive: 10, 24, 32 or 64
+    stride: 10 # archive step 0.001, target delta 0.01
+    split_frac: [0.7, 0.15] # train / val split, the rest is test
+    n_stats_frames: 2000

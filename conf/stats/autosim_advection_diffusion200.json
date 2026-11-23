@@ -1,0 +1,13 @@
+{
+  "dataset": "advection_diffusion200",
+  "regime": null,
+  "vars": [
+    "c0"
+  ],
+  "mean": [
+    0.1244909798093666
+  ],
+  "std": [
+    0.19341247269316492
+  ]
+}

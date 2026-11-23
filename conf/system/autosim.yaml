@@ -1,0 +1,10 @@
+# @package _global_
+system:
+  name: autosim
+  L: 24
+  stats_path: ${conf:stats/autosim_${system.args.dataset}.json}
+  args:
+    root: ??? # directory holding <dataset>/data/, see docs/DATA.md
+    dataset: ??? # e.g. gpe_wake200
+    periodic: null # periodic spatial axes; null: both for gray_scott, none otherwise
+    n_stats_frames: 64

@@ -1,0 +1,11 @@
+# @package _global_
+train:
+  steps: 20
+  batch: 2
+  workers: 0
+  val_every: 10
+  val_windows: 4
+eval:
+  m_gen: 4
+  max_windows: 6
+  chains: 2

@@ -1,0 +1,23 @@
+# @package _global_
+system:
+  name: era5
+  L: 24
+  stats_path: ${conf:stats/era5.json}
+  args:
+    root: ??? # directory holding the <year>.h5 files, see docs/DATA.md
+    vars:
+      [
+        10m_u_component_of_wind,
+        10m_v_component_of_wind,
+        2m_dewpoint_temperature,
+        2m_temperature,
+        mean_sea_level_pressure,
+        total_column_water,
+        total_precipitation,
+      ]
+    box: [0, 149, 0, 281] # y0, y1, x0, x1 on the Europe grid
+    years_train: ${range:1979,2016}
+    years_val: [2016, 2017, 2018]
+    years_test: [2019, 2020, 2021, 2022]
+    n_stats_days: 128
+    var_weights: [0.130, 0.159, 0.024, 0.053, 0.044, 0.083, 0.509]

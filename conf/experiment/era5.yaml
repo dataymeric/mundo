@@ -1,0 +1,18 @@
+# @package _global_
+# Run ERA5 experiments:
+#   mundo-train +experiment=era5 system.args.root=<data dir> out=<output dir> \
+#     arm=<recursive|single_step|FlowMatching|FlowDPS|SimVP> system.face=<disagg|interp>
+defaults:
+  - override /system: era5
+  - override /backbone: arches
+arm:
+  fm_loss: sd3
+train:
+  var_weights: true
+  context_obs: true
+  vg_clamp: true
+eval:
+  context: "on"
+  m_batch: 8
+  cdft_per_step: true # one CDF-t map per hour of the day (diurnal cycle)
+  cdft_windows: 365

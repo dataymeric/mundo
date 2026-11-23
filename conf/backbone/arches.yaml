@@ -1,0 +1,5 @@
+# @package _global_
+backbone:
+  name: arches
+  args:
+    emb: 192
